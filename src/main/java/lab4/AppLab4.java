@@ -2,10 +2,8 @@ package lab4;
 
 import java.util.*;
 
-import static java.lang.Character.getName;
-
 public class AppLab4 {
-    static void main() {
+    public static void main(String[] args) {
         HashMap<String, Integer> varste = new HashMap<>();
         varste.put("Ioan", 21);
         varste.put("Maria", 22);
@@ -19,36 +17,32 @@ public class AppLab4 {
         Map<String, String> adrese = Map.of("Ioan", "Sibiu", "Maria", "Bucuresti", "Victor",
                 "Cluj","Simina", "Alba-Iulia","Marius", "Medias", "Mihai", "Cisnadie","Daniela", "Sibiu");
 
-        Set entries = varste.entrySet(); //parcurgerea intrarilor in Map, cu iterator
-        Iterator iterator = entries.iterator();
+        Set<Map.Entry<String, Integer>> entries = varste.entrySet(); //parcurgerea intrarilor in Map, cu iterator
+        Iterator<Map.Entry<String, Integer>> iterator = entries.iterator();
         while(iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
-            Object key = entry.getKey();
-            Object value = entry.getValue();
+            Map.Entry<String, Integer> entry = iterator.next();
             System.out.println(entry);
         }
         System.out.println("\n");
-        Set entries2 = adrese.entrySet(); //parcurgerea intrarilor in Map, cu iterator
-        Iterator iterator2 = entries.iterator();
+        Set<Map.Entry<String, String>> entries2 = adrese.entrySet(); //parcurgerea intrarilor in Map, cu iterator
+        Iterator<Map.Entry<String, String>> iterator2 = entries2.iterator();
         while(iterator2.hasNext()) {
-            Map.Entry entry2 = (Map.Entry) iterator2.next();
-            Object key = entry2.getKey();
-            Object value = entry2.getValue();
+            Map.Entry<String, String> entry2 = iterator2.next();
             System.out.println(entry2);
         }
 
         HashMap<String, Tanar> tineri = new HashMap<>();
-        for(Object key : varste.keySet()) { //parcurgere Map folosind for-each
-            Object value = varste.get(key);
-            tineri.put(value, null);
+        for(String name : varste.keySet()) { //parcurgere Map folosind for-each
+            int age = varste.get(name);
+            String address = adrese.get(name);
+            tineri.put(name, new Tanar(name, age, address));
         }
 
-        Set entries3 = tineri.entrySet(); //parcurgerea intrarilor in Map, cu iterator
-        Iterator iterator3 = entries.iterator();
-        while(iterator2.hasNext()) {
-            Map.Entry entry3 = (Map.Entry) iterator2.next();
-            Object key = entry3.getKey();
-            Object value = entry3.getValue();
+        System.out.println("\n");
+        Set<Map.Entry<String, Tanar>> entries3 = tineri.entrySet(); //parcurgerea intrarilor in Map, cu iterator
+        Iterator<Map.Entry<String, Tanar>> iterator3 = entries3.iterator();
+        while(iterator3.hasNext()) {
+            Map.Entry<String, Tanar> entry3 = iterator3.next();
             System.out.println(entry3);
         }
     }
