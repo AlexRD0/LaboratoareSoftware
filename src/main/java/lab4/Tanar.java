@@ -22,4 +22,9 @@ public class Tanar {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "Tanar{name='" + name + "', age=" + age + ", address='" + address + "'}";
+    }
 }
